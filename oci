@@ -1,13 +1,7 @@
 #!/bin/bash
 if [ $(docker images -q --filter reference=ppaludo/oci-cli | wc -l) -eq 0 ]; then
-	echo "Baixando imagem do container..."
+	echo "Downloading container image..."
 	docker pull ppaludo/oci-cli:latest
 else
-	#if [ $# -gt 0 ]; then
-		docker run --rm -ti -p 8181:8181 -v ${HOME}/.oci:/root/.oci ppaludo/oci-cli $*
-	#fi
-
+	docker run --rm -ti -p 8181:8181 -v ${HOME}/.oci:/root/.oci ppaludo/oci-cli $*
 fi
-
-
-
